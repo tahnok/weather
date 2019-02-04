@@ -26,6 +26,8 @@ font_small = pygame.font.Font(None, 24)
 
 
 while True:
+    lcd.fill((0,0,0))
+
     parsed = fetch()
 
     wind_chill = parsed['siteData']['currentConditions']['windChill']['#text']
@@ -49,7 +51,7 @@ while True:
     lcd.blit(forecast_surface, rect)
 
     image_code = parsed['siteData']['forecastGroup']['forecast'][0]['abbreviatedForecast']['iconCode']['#text']
-    image = pygame.image.load('images/%s.gif' % image_code)
+    image = pygame.image.load('/home/pi/weather/images/%s.gif' % image_code)
     rect = image.get_rect(topleft=(240,20))
     lcd.blit(image, rect)
 

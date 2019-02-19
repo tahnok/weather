@@ -28,7 +28,11 @@ font_small = pygame.font.Font(None, 24)
 while True:
     lcd.fill((0,0,0))
 
-    parsed = fetch()
+    try:
+        parsed = fetch()
+    except Exception, e:
+        sleep(60 * 60)
+        next
 
     wind_chill = parsed['siteData']['currentConditions']['windChill']['#text']
     wind_chill_surface = font_big.render("%s C" % wind_chill, True, (255,255,255))
@@ -67,5 +71,5 @@ while True:
     lcd.blit(time_text, rect)
 
     pygame.display.update()
-    sleep(60 * 15)
+    sleep(60 * 60)
 

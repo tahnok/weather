@@ -2,7 +2,7 @@ import pygame
 import os
 import urllib2
 import xmltodict
-from time import sleep, gmtime, strftime
+from time import sleep, localtime, strftime
 
 def fetch():
     remote = urllib2.urlopen('http://dd.weather.gc.ca/citypage_weather/xml/ON/s0000430_e.xml')
@@ -69,7 +69,7 @@ while True:
     rect = tomorrow_forecast_surface.get_rect(topleft=(20,200))
     lcd.blit(tomorrow_forecast_surface, rect)
 
-    time = strftime("%H:%M", gmtime())
+    time = strftime("%H:%M", localtime())
     time_text = font_small.render("%s" % time, True, (255,255,255))
     rect = time_text.get_rect(topleft=(260,220))
     lcd.blit(time_text, rect)

@@ -36,15 +36,16 @@ while True:
         sleep(60 * 60)
         next
 
-    wind_chill = parsed['siteData']['currentConditions']['windChill']['#text']
-    wind_chill_surface = font_big.render("%s C" % wind_chill, True, (255,255,255))
-    rect = wind_chill_surface.get_rect(center=(60,40))
-    lcd.blit(wind_chill_surface, rect)
-
     temperature = parsed['siteData']['currentConditions']['temperature']['#text']
-    temperature_surface = font_small.render("%s C" % temperature, True, (255,255,255))
-    rect = temperature_surface.get_rect(center=(60,70))
+    temperature_surface = font_big.render("%s C" % temperature, True, (255,255,255))
+    rect = temperature_surface.get_rect(center=(60,40))
     lcd.blit(temperature_surface, rect)
+
+    if 'windChill' in parsed['siteData']['currentConditions']:
+        wind_chill = parsed['siteData']['currentConditions']['windChill']['#text']
+        wind_chill_surface = font_large.render("%s C" % wind_chill, True, (255,255,255))
+        rect = wind_chill_surface.get_rect(center=(60,70))
+        lcd.blit(wind_chill_surface, rect)
 
     conditions = parsed['siteData']['currentConditions']['condition']
     conditions_surface = font_medium.render("%s" % conditions, True, (255,255,255))

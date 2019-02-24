@@ -13,7 +13,9 @@ def fetch():
     parsed = xmltodict.parse(raw)
     return parsed
 
-os.putenv('SDL_FBDEV', '/dev/fb1')
+if os.path.isfile("/sys/firmware/devicetree/base/model"):
+    os.putenv('SDL_FBDEV', '/dev/fb1')
+
 pygame.init()
 pygame.mouse.set_visible(False)
 lcd = pygame.display.set_mode((320, 240))

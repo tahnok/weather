@@ -55,7 +55,8 @@ while True:
     lcd.blit(forecast_surface, rect)
 
     image_code = parsed['siteData']['forecastGroup']['forecast'][0]['abbreviatedForecast']['iconCode']['#text']
-    image = pygame.image.load('/home/pi/weather/images/%s.gif' % image_code)
+    image_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'images/%s.gif' % image_code)
+    image = pygame.image.load(image_path)
     rect = image.get_rect(topleft=(240,20))
     lcd.blit(image, rect)
 

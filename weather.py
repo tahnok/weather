@@ -1,11 +1,11 @@
 import pygame
 import os
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 import xmltodict
 from time import sleep, localtime, strftime
 
 def fetch():
-    remote = urllib2.urlopen('http://dd.weather.gc.ca/citypage_weather/xml/ON/s0000430_e.xml')
+    remote = urllib.request.urlopen('http://dd.weather.gc.ca/citypage_weather/xml/ON/s0000430_e.xml')
     # remote = open('sample.xml', 'r')
     raw = remote.read()
     remote.close()
@@ -32,7 +32,7 @@ while True:
 
     try:
         parsed = fetch()
-    except Exception, e:
+    except Exception as e:
         sleep(60 * 60)
         next
 

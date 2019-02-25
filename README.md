@@ -1,8 +1,10 @@
 ```
-       _   ___   _ _  
-\    /|_ /\ ||_||_|_) 
- \/\/ |_/--\|| ||_| \ 
-                      
+ _            ___  ___,  ______,      ___  , __  
+(_|   |   |_// (_)/   | (_) | /|   | / (_)/|/  \ 
+  |   |   |  \__ |    |     |  |___| \__   |___/ 
+  |   |   |  /   |    |   _ |  |   |\/     | \   
+   \_/ \_/   \___/\__/\_/(_/   |   |/\___/ |  \_/
+                                                 
 ```
 
 Display the current weather from the Government of Canada on a Raspberry Pi (or any machine running PyGame)
@@ -26,3 +28,4 @@ Open up `/etc/rc.local` and add
 `pip install -r requirements.txt`
 
 
+                                                 

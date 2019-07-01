@@ -18,7 +18,7 @@ def main():
             continue
 
         temperature = parsed['siteData']['currentConditions']['temperature']['#text']
-        renderer.draw_text("%s C" % temperature, "big", "center", 60, 40)
+        renderer.draw_text("Now: %s C" % temperature, "big", "center", 60, 40)
 
         if 'windChill' in parsed['siteData']['currentConditions']:
             wind_chill = parsed['siteData']['currentConditions']['windChill']['#text']
@@ -28,14 +28,14 @@ def main():
         renderer.draw_text(conditions, "medium", "topleft", 20, 100)
 
         forecast = parsed['siteData']['forecastGroup']['forecast'][0]['abbreviatedForecast']['textSummary']
-        renderer.draw_text(forecast, "medium", "topleft", 20, 140)
+        renderer.draw_text("Later: %s" % forecast, "medium", "topleft", 20, 140)
 
         image_code = parsed['siteData']['forecastGroup']['forecast'][0]['abbreviatedForecast']['iconCode']['#text']
         renderer.draw_image(image_code)
 
         # Will be wrong at night, need to go only one forward
         tomorrow_forecast = parsed['siteData']['forecastGroup']['forecast'][2]['abbreviatedForecast']['textSummary']
-        renderer.draw_text(tomorrow_forecast, "small", "topleft", 20, 200)
+        renderer.draw_text("Tomorrow: %s" % tomorrow_forecast, "small", "topleft", 20, 200)
 
         time = strftime("%H:%M", localtime())
         renderer.draw_text(time, "small", "topleft", 260, 220)
